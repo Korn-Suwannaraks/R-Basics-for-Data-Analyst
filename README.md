@@ -136,7 +136,7 @@ ggplot(penguins , aes(x = flipper_length_mm, y = body_mass_g, color = species, s
 
 Create line plot, point-by-point
 ``` r
-ggplot(penguin , aes(x = id, y = body_mass_g)) +
+ggplot(penguins , aes(x = id, y = body_mass_g)) +
   geom_line()
 ```
 
@@ -145,14 +145,14 @@ ggplot(penguin , aes(x = id, y = body_mass_g)) +
 create bar plot with `+geom_bar`
 need only one input, group_by and counts n() will apply automatically
 ``` r
-ggplot(penguin , aes(x = species)) +
+ggplot(penguins , aes(x = species)) +
   geom_bar()
 ```
 
 create bar plot with `+geom_col`
 need two input, can be create after using aggregate function such as `summarize`
 ``` r
-result <- penguin %>% 
+result <- penguins %>% 
   group_by(species) %>%
   summarize(avgweight=mean(body_mass_g))
   
@@ -190,8 +190,17 @@ Multiple charts can be shown at the same time by using `facet_grid`
 ggplot(penguins,aes(x=flipper_length_mm,y=body_mass_g)) +
   geom_point() + facet_grid(species ~ island)
 ```
+![Rplot01](https://user-images.githubusercontent.com/107392735/174031260-76862a87-2e67-4637-9ea5-37111ca458f9.png)
+# Editing axis
 
-
+Convert axis to logarithmic scale
+``` r
++ scale_x_log10()
+```
+Indicate starting value of an axis
+``` r
++ expand_limits( x = 50 )	
+```
 
 
 
