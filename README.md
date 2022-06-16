@@ -121,6 +121,7 @@ penguins %>%
 
 Visualization can be created using `ggplot` package (part of the core Tidyverse package)
 GGPLOT is designed to directly utilize data inside of a Tibble 
+Note that ggplot() can be used inside pipe %>% structure
 
 ## Scatter plot
 
@@ -130,6 +131,68 @@ Create scatter plot with grouping by color, by size and by sex
 ggplot(penguins , aes(x = flipper_length_mm, y = body_mass_g, color = species, size = island, shape = sex)) +
   geom_point()
 ```
+![Rplot](https://user-images.githubusercontent.com/107392735/174025905-976c4aac-73de-4163-9e3c-41fd27a9aded.png)
+## Line plot
+
+Create line plot, point-by-point
+``` r
+ggplot(penguin , aes(x = id, y = body_mass_g)) +
+  geom_line()
+```
+
+## Bar plot
+
+create bar plot with `+geom_bar`
+need only one input, group_by and counts n() will apply automatically
+``` r
+ggplot(penguin , aes(x = species)) +
+  geom_bar()
+```
+
+create bar plot with `+geom_col`
+need two input, can be create after using aggregate function such as `summarize`
+``` r
+result <- penguin %>% 
+  group_by(species) %>%
+  summarize(avgweight=mean(body_mass_g))
+  
+ggplot(result , aes(x=species,y=avgweight)) +
+  geom_col()
+```
+
+## Histogram
+``` r
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(bins = 10)
+```
+
+## Boxplot
+``` r
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+```
+
+# Adding Text
+
+Add title, subtitle and caption
+``` r
++labs( title = " ", subtitle = " ", caption = " ")
+```
+Add text at specified location
+``` r
++annotate( "text", x= ,y= , label = " ")
+```
+
+# Faceting
+
+Multiple charts can be shown at the same time by using `facet_grid`
+``` r
+ggplot(penguins,aes(x=flipper_length_mm,y=body_mass_g)) +
+  geom_point() + facet_grid(species ~ island)
+```
+
+
+
 
 
 
