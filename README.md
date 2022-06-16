@@ -117,6 +117,19 @@ penguins %>%
   top_n(3,body_mass_g)
 ```
 
+# Visualization
+
+Visualization can be created using `ggplot` package (part of the core Tidyverse package)
+GGPLOT is designed to directly utilize data inside of a Tibble 
+
+## Scatter plot
+
+Create scatter plot with grouping by color, by size and by sex
+
+``` r
+ggplot(penguins , aes(x = flipper_length_mm, y = body_mass_g, color = species, size = island, shape = sex)) +
+  geom_point()
+```
 
 
 
