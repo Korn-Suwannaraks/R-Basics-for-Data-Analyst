@@ -17,12 +17,10 @@ I am documenting the basics of R for Data analytical task. The Tidyverse package
      -   [Bar plot](#bar-plot)
      -   [Histogram](#histogram)
      -   [Boxplot](#boxplot)
+     -   [Adding text](#adding-text)
+     -   [Faceting](#faceting)
+     -   [Editing axis](#editing-axis)
 
-
-
-
-# Introduction
-wffewfewfew
 ## Download and install `Tidyverse` packages
 ``` r
 install.packages('tidyverse')
